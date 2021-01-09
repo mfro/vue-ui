@@ -3,6 +3,7 @@
     <label :for="id" v-if="label" class="label">{{ label }}</label>
 
     <input
+      ref="input"
       class="px-4 py-2"
       type="text"
       :id="id"
@@ -37,6 +38,20 @@ export default {
   methods: {
     onInput(e) {
       this.$emit('update:modelValue', e.target.value);
+    },
+  },
+
+  methods: {
+    blur() {
+      this.$refs.input.blur();
+    },
+
+    focus() {
+      this.$refs.input.focus();
+    },
+
+    select() {
+      this.$refs.input.select();
     },
   },
 };

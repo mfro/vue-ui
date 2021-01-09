@@ -9,6 +9,7 @@
         column: column,
         'align-start': alignStart,
         'align-center': alignCenter,
+        'align-baseline': alignBaseline,
         'align-end': alignEnd,
         'justify-start': justifyStart,
         'justify-center': justifyCenter,
@@ -33,6 +34,7 @@ export default {
     column: { type: Boolean, default: false },
     alignStart: { type: Boolean, default: false },
     alignCenter: { type: Boolean, default: false },
+    alignBaseline: { type: Boolean, default: false },
     alignEnd: { type: Boolean, default: false },
     justifyStart: { type: Boolean, default: false },
     justifyCenter: { type: Boolean, default: false },
@@ -71,6 +73,10 @@ div.v-flex {
 
   &.align-center {
     align-items: center;
+  }
+
+  &.align-baseline {
+    align-items: baseline;
   }
 
   &.align-end {

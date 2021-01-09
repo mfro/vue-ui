@@ -39,7 +39,7 @@ export default {
     xSmall: { type: Boolean, default: false },
     large: { type: Boolean, default: false },
     xLarge: { type: Boolean, default: false },
-  }
+  },
 };
 </script>
 
@@ -100,10 +100,10 @@ button.v-button {
   }
 
   &.disabled {
-    pointer-events: none;
-    color: darkgray;
-    background-color: darken(white, 12%);
-    box-shadow: none;
+    pointer-events: none !important;
+    color: darkgray !important;
+    background-color: darken(white, 12%) !important;
+    box-shadow: none !important;
   }
 
   &.color-default {
