@@ -6,10 +6,13 @@ import { Plugin } from 'vue';
 import app from './app.vue';
 import button from './button.vue';
 import card from './card.vue';
+import checkbox from './checkbox.vue';
 import dialog from './dialog.vue';
 import flex from './flex.vue';
 import grow from './grow.vue';
 import icon from './icon.vue';
+import input from './input.vue';
+import select from './select.vue';
 import textField from './text-field.vue';
 import text from './text.vue';
 import tooltip from './tooltip.vue';
@@ -18,10 +21,13 @@ const components = [
     app,
     button,
     card,
+    checkbox,
     dialog,
     flex,
     grow,
     icon,
+    input,
+    select,
     textField,
     text,
     tooltip,

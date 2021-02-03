@@ -11,13 +11,15 @@
 </template>
 
 <script>
-import { nextTick, watchEffect } from 'vue';
+import { nextTick } from 'vue';
 
 export default {
   name: 'v-tooltip',
 
   props: {
     text: { type: String, default: null },
+    left: { type: Boolean, default: null },
+    right: { type: Boolean, default: null },
     bottom: { type: Boolean, default: null },
   },
 
@@ -43,10 +45,34 @@ export default {
       let box = node.getBoundingClientRect();
 
       this.visible = true;
-      this.style = {
-        top: `${box.bottom}px`,
-        left: `${box.left + box.width / 2}px`,
-      };
+      if (this.left) {
+        this.style = {
+          'top': `${box.top + box.height / 2}px`,
+          'right': `${window.innerWidth - box.left}px`,
+          'transform': `translateY(-50%)`,
+          'margin-top': `0`,
+          'margin-left': `0`,
+          'margin-bottom': `0`,
+        };
+      } else if (this.right) {
+        this.style = {
+          'top': `${box.top + box.height / 2}px`,
+          'left': `${box.right}px`,
+          'transform': `translateY(-50%)`,
+          'margin-top': `0`,
+          'margin-right': `0`,
+          'margin-bottom': `0`,
+        };
+      } else {
+        this.style = {
+          'top': `${box.bottom}px`,
+          'left': `${box.left + box.width / 2}px`,
+          'transform': `translateX(-50%)`,
+          'margin-left': `0`,
+          'margin-right': `0`,
+          'margin-bottom': `0`,
+        };
+      }
     });
 
     node.addEventListener('mouseleave', () => {
@@ -67,10 +93,11 @@ export default {
 @import "./style.scss";
 
 div.v-tooltip {
-  margin-top: 2 * $unit;
+  z-index: 2;
+
+  margin: 2 * $unit;
 
   position: absolute;
-  transform: translateX(-50%);
 
   padding: 2 * $unit 4 * $unit;
   border-radius: 4px;

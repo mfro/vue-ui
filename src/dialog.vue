@@ -18,8 +18,6 @@
 <script>
 import { nextTick } from 'vue';
 
-let dialog_counter = 0;
-
 export default {
   name: 'v-dialog',
 

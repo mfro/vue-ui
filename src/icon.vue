@@ -1,28 +1,48 @@
 <template>
-  <span
-    class="v-icon material-icons"
-    :class="{
-      bold,
-      small,
-      'x-small': xSmall,
-      large,
-      'x-large': xLarge,
-    }"
-  >
+  <span class="v-icon" :class="classes">
     <slot />
   </span>
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default {
   name: 'v-icon',
 
   props: {
     bold: { type: Boolean, default: false },
+    color: { type: String, default: null },
+
+    outlined: { type: Boolean, default: false },
+    rounded: { type: Boolean, default: false },
+    twoTone: { type: Boolean, default: false },
+    sharp: { type: Boolean, default: false },
+
     small: { type: Boolean, default: false },
     xSmall: { type: Boolean, default: false },
     large: { type: Boolean, default: false },
     xLarge: { type: Boolean, default: false },
+  },
+
+  setup(props) {
+    const classes = computed(() => [props.color, {
+      'bold': props.bold,
+
+      'material-icons': !(props.outlined || props.rounded || props.twoTone || props.sharp),
+
+      'material-icons-outlined': props.outlined,
+      'material-icons-round': props.rounded,
+      'material-icons-two-tone': props.twoTone,
+      'material-icons-sharp': props.sharp,
+
+      'small': props.small,
+      'x-small': props.xSmall,
+      'large': props.large,
+      'x-large': props.xLarge,
+    }]);
+
+    return { classes };
   },
 };
 </script>
@@ -38,6 +58,22 @@ span.v-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  &.primary {
+    color: $primary;
+  }
+
+  &.error {
+    color: $error;
+  }
+
+  &.warning {
+    color: $warning;
+  }
+
+  &.green {
+    color: $green;
+  }
 
   &.bold {
     font-weight: bold;

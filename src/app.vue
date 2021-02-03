@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import { watchEffect } from 'vue';
-
 export default {
   name: 'v-app',
 

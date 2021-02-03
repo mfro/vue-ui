@@ -2,19 +2,7 @@
   <button
     class="v-button"
     v-ripple
-    :class="[
-      'color-' + color,
-      {
-        fab,
-        text,
-        icon,
-        disabled,
-        small,
-        'x-small': xSmall,
-        large,
-        'x-large': xLarge,
-      },
-    ]"
+    :class="['color-' + color, classes]"
     :disabled="disabled"
     @click="$emit('click')"
   >
@@ -25,6 +13,8 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default {
   name: 'v-button',
 
@@ -40,6 +30,21 @@ export default {
     large: { type: Boolean, default: false },
     xLarge: { type: Boolean, default: false },
   },
+
+  setup(props) {
+    const classes = computed(() => ({
+      fab: props.fab,
+      text: props.text,
+      icon: props.icon,
+      disabled: props.disabled,
+      small: props.small,
+      'x-small': props.xSmall,
+      large: props.large,
+      'x-large': props.xLarge,
+    }));
+
+    return { classes };
+  },
 };
 </script>
 
@@ -47,7 +52,7 @@ export default {
 @import "./style.scss";
 
 $default-bg: #f5f5f5;
-$default-text: rgba(0,0,0,.87);
+$default-text: rgba(0, 0, 0, 0.87);
 
 button.v-button {
   box-shadow: 1px 1px 4px fade-out(black, 0.75);
@@ -158,8 +163,8 @@ button.v-button {
     }
 
     &.small {
-      width: 1.75 * $text-unit;
-      height: 1.75 * $text-unit;
+      width: 1.5 * $text-unit;
+      height: 1.5 * $text-unit;
     }
 
     &.large {

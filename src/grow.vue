@@ -1,5 +1,5 @@
 <template>
-  <div class="v-grow" :class="{}">
+  <div class="v-grow">
     <slot />
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'v-grow',
-}
+};
 </script>
 
 <style lang="scss" scoped>

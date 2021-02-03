@@ -1,40 +1,19 @@
 <template>
-  <v-input
-    @click="$refs.input.focus()"
-    :label="label"
-    :solo="solo"
-    :small="small"
-    :x-small="xSmall"
-    :large="large"
-    :x-large="xLarge"
-    :error="error"
-    :warning="warning"
-    style="cursor: text"
-  >
-    <template v-slot="{ id }">
-      <input
-        ref="input"
-        type="text"
-        :id="id"
-        :value="modelValue"
-        :placeholder="placeholder"
-        @input="onInput"
-        @blur="$emit('blur')"
-        @focus="$emit('focus')"
-      />
-    </template>
-  </v-input>
+  <input
+    ref="input"
+    type="checkbox"
+    :checked="modelValue"
+    @change="$emit('update:modelValue', !modelValue)"
+  />
 </template>
 
 <script>
 export default {
-  name: 'v-text-field',
+  name: 'v-checkbox',
 
   emits: ['update:modelValue', 'focus', 'blur'],
   props: {
-    label: String,
-    modelValue: String,
-    placeholder: String,
+    modelValue: Boolean,
 
     solo: { type: Boolean, default: false },
     small: { type: Boolean, default: false },
@@ -47,11 +26,6 @@ export default {
   },
 
   methods: {
-    onInput(e) {
-      this.$emit('update:modelValue', e.target.value);
-      this.$nextTick(() => e.target.value = this.modelValue)
-    },
-
     blur() {
       this.$refs.input.blur();
     },
@@ -77,5 +51,8 @@ input {
 
   font-family: Roboto;
   font-weight: normal;
+
+  width: (1.1875 * $text_unit);
+  height: (1.1875 * $text_unit);
 }
 </style>

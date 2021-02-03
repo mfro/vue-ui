@@ -1,29 +1,12 @@
 <template>
-  <div
-    class="v-flex"
-    :class="[
-      {
-        grow: grow,
-        wrap: wrap,
-        row: row,
-        column: column,
-        'align-start': alignStart,
-        'align-center': alignCenter,
-        'align-baseline': alignBaseline,
-        'align-end': alignEnd,
-        'justify-start': justifyStart,
-        'justify-center': justifyCenter,
-        'justify-space-around': justifySpaceAround,
-        'justify-space-between': justifySpaceBetween,
-        'justify-end': justifyEnd,
-      },
-    ]"
-  >
+  <div class="v-flex" :class="[classes]">
     <slot />
   </div>
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default {
   name: 'v-flex',
 
@@ -42,7 +25,27 @@ export default {
     justifySpaceBetween: { type: Boolean, default: false },
     justifyEnd: { type: Boolean, default: false },
   },
-}
+
+  setup(props) {
+    const classes = computed(() => ({
+      grow: props.grow,
+      wrap: props.wrap,
+      row: props.row,
+      column: props.column,
+      'align-start': props.alignStart,
+      'align-center': props.alignCenter,
+      'align-baseline': props.alignBaseline,
+      'align-end': props.alignEnd,
+      'justify-start': props.justifyStart,
+      'justify-center': props.justifyCenter,
+      'justify-space-around': props.justifySpaceAround,
+      'justify-space-between': props.justifySpaceBetween,
+      'justify-end': props.justifyEnd,
+    }));
+
+    return { classes };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
