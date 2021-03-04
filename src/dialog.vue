@@ -1,6 +1,6 @@
 <template>
-  <teleport v-if="ready" to="#v-overlay">
-    <transition appear>
+  <teleport v-if="doTeleport" to="#v-overlay">
+    <transition appear @after-leave="doTeleport = false">
       <div v-if="modelValue" class="v-dialog" @click="onClick">
         <v-flex
           align-center
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { nextTick } from 'vue';
+import { shallowRef, watchEffect } from 'vue';
 
 export default {
   name: 'v-dialog',
@@ -27,13 +27,17 @@ export default {
     persistent: { type: Boolean, default: false },
   },
 
-  data() {
-    nextTick(() => {
-      this.ready = true;
+  setup(props) {
+    let doTeleport = shallowRef(false);
+
+    watchEffect(() => {
+      if (props.modelValue) {
+        doTeleport.value = true;
+      }
     });
 
     return {
-      ready: false,
+      doTeleport,
     };
   },
 
