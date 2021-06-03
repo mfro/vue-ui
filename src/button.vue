@@ -51,7 +51,7 @@ export default {
 <style lang="scss" scoped>
 @import "./style.scss";
 
-$default-bg: #f5f5f5;
+$default-bg: #e8e8e8;
 $default-text: rgba(0, 0, 0, 0.87);
 
 button.v-button {
@@ -68,7 +68,6 @@ button.v-button {
   outline: none;
   border-radius: 4px;
 
-  font-family: Roboto;
   font-weight: 500;
   text-transform: uppercase;
   // text-indent: 0.0892857143em;
@@ -117,7 +116,7 @@ button.v-button {
 
     &:hover,
     &:focus {
-      background-color: darken($default-bg, 6%);
+      background-color: darken($default-bg, 10%);
     }
   }
 
@@ -128,6 +127,16 @@ button.v-button {
     &:hover,
     &:focus {
       background-color: lighten($primary, 10%);
+    }
+  }
+
+  &.color-green {
+    color: $green;
+    background-color: $default-bg;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($default-bg, 10%);
     }
   }
 
@@ -196,6 +205,16 @@ button.v-button {
       &:hover,
       &:focus {
         background-color: fade-out($primary, 0.9);
+      }
+    }
+
+    &.color-green {
+      color: $green;
+      background-color: transparent;
+
+      &:hover,
+      &:focus {
+        background-color: fade-out($green, 0.9);
       }
     }
 

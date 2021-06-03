@@ -1,6 +1,6 @@
 <template>
   <teleport v-if="doTeleport" to="#v-overlay">
-    <transition appear @after-leave="doTeleport = false">
+    <transition :appear="!skipAnimation" @after-leave="doTeleport = false">
       <div v-if="modelValue" class="v-dialog" @click="onClick">
         <v-flex
           align-center
@@ -25,6 +25,7 @@ export default {
   props: {
     modelValue: { type: Boolean, default: false },
     persistent: { type: Boolean, default: false },
+    skipAnimation: { type: Boolean, default: false },
   },
 
   setup(props) {

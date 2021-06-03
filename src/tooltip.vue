@@ -106,7 +106,6 @@ div.v-tooltip {
   background-color: fade-out(#555, 0.15);
 
   font-size: 1 * $text-unit;
-  font-family: Roboto;
 
   &.v-enter-from,
   &.v-leave-to {

@@ -79,7 +79,6 @@ div.v-select {
     font-size: $text-unit;
     outline: none;
 
-    font-family: Roboto;
     font-weight: normal;
 
     pointer-events: all;

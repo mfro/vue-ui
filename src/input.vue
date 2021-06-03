@@ -102,7 +102,6 @@ div.v-input {
     padding-left: 4 * $unit;
 
     font-size: 0.75 * $text-unit;
-    font-family: Roboto;
     color: lighten(black, 30%);
   }
 

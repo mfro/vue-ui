@@ -42,7 +42,7 @@ export default {
 div.v-app {
   color: lighten(black, 20%);
   font-size: $text-unit;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
 
   width: 100%;
   height: 100%;

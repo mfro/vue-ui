@@ -75,7 +75,6 @@ input {
   font-size: $text-unit;
   outline: none;
 
-  font-family: Roboto;
   font-weight: normal;
 }
 </style>
