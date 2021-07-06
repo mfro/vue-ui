@@ -9,6 +9,7 @@ import card from './card.vue';
 import checkbox from './checkbox.vue';
 import dialog from './dialog.vue';
 import flex from './flex.vue';
+import grid from './grid.vue';
 import grow from './grow.vue';
 import icon from './icon.vue';
 import input from './input.vue';
@@ -24,6 +25,7 @@ const components = [
     checkbox,
     dialog,
     flex,
+    grid,
     grow,
     icon,
     input,

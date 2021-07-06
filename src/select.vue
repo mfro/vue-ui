@@ -5,6 +5,10 @@
         {{ text(option) }}
       </option>
     </select>
+
+    <div class="icon-container">
+      <v-icon>arrow_drop_down</v-icon>
+    </div>
   </div>
 </template>
 
@@ -98,6 +102,16 @@ div.v-select {
       // width: 2.5 * $text-unit;
       // height: 2.5 * $text-unit;
     }
+  }
+
+  .icon-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    pointer-events: none;
+    justify-content: center;
   }
 }
 </style>

@@ -22,6 +22,7 @@ export default {
   props: {
     fab: { type: Boolean, default: false },
     text: { type: Boolean, default: false },
+    tile: { type: Boolean, default: false },
     icon: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
     color: { type: String, default: 'default' },
@@ -35,6 +36,7 @@ export default {
     const classes = computed(() => ({
       fab: props.fab,
       text: props.text,
+      tile: props.tile,
       icon: props.icon,
       disabled: props.disabled,
       small: props.small,
@@ -78,6 +80,10 @@ button.v-button {
   white-space: nowrap;
 
   transition: background-color 160ms, color 160ms, box-shadow 160ms;
+
+  &.tile {
+    border-radius: 0;
+  }
 
   &.x-small {
     height: 1.25 * $text-unit;
