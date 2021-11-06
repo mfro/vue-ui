@@ -87,7 +87,10 @@ div.v-select {
 
     pointer-events: all;
 
-    padding: (2 * $unit) (4 * $unit);
+    padding-top: (2 * $unit);
+    padding-left: (4 * $unit);
+    padding-right: calc(3ch + 16px);
+    padding-bottom: (2 * $unit);
 
     &.small {
       padding-top: (1 * $unit);

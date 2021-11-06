@@ -52,6 +52,9 @@ export const framework: Plugin = (app, options) => {
             let container: HTMLDivElement | undefined;
 
             function start(e: MouseEvent) {
+                if ('_mfro_ripple' in e) return;
+                Object.assign(e, { '_mfro_ripple': true });
+
                 finish();
 
                 let box = el.getBoundingClientRect();
@@ -79,6 +82,8 @@ export const framework: Plugin = (app, options) => {
 
                 container.appendChild(inner);
                 el.appendChild(container);
+
+                if (binding.arg) ((binding.instance as any)[binding.arg] as any)(true);
             }
 
             function finish() {
@@ -93,6 +98,8 @@ export const framework: Plugin = (app, options) => {
                 })
 
                 container = undefined;
+
+                if (binding.arg) ((binding.instance as any)[binding.arg] as any)(false);
             }
         },
     });

@@ -74,6 +74,7 @@ input {
   color: inherit;
   font-size: $text-unit;
   outline: none;
+  flex: 1 1;
 
   font-weight: normal;
 }

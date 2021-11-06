@@ -21,6 +21,7 @@ export default {
     alignEnd: { type: Boolean, default: false },
     justifyStart: { type: Boolean, default: false },
     justifyCenter: { type: Boolean, default: false },
+    justifySpaceEvenly: { type: Boolean, default: false },
     justifySpaceAround: { type: Boolean, default: false },
     justifySpaceBetween: { type: Boolean, default: false },
     justifyEnd: { type: Boolean, default: false },
@@ -38,6 +39,7 @@ export default {
       'align-end': props.alignEnd,
       'justify-start': props.justifyStart,
       'justify-center': props.justifyCenter,
+      'justify-space-evenly': props.justifySpaceEvenly,
       'justify-space-around': props.justifySpaceAround,
       'justify-space-between': props.justifySpaceBetween,
       'justify-end': props.justifyEnd,
@@ -96,6 +98,10 @@ div.v-flex {
 
   &.justify-end {
     justify-content: flex-end;
+  }
+
+  &.justify-space-evenly {
+    justify-content: space-evenly;
   }
 
   &.justify-space-around {

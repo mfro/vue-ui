@@ -3,7 +3,7 @@
 
   <teleport v-if="ready" to="#v-overlay">
     <transition appear>
-      <div class="v-tooltip" v-if="visible" :style="style">
+      <div class="v-tooltip" v-if="visible" :style="style" ref="tooltip">
         <span>{{ text }}</span>
       </div>
     </transition>
@@ -18,6 +18,7 @@ export default {
 
   props: {
     text: { type: String, default: null },
+    top: { type: Boolean, default: null },
     left: { type: Boolean, default: null },
     right: { type: Boolean, default: null },
     bottom: { type: Boolean, default: null },
@@ -29,6 +30,7 @@ export default {
     });
 
     return {
+      style: {},
       ready: false,
       visible: false,
     };
@@ -63,6 +65,15 @@ export default {
           'margin-right': `0`,
           'margin-bottom': `0`,
         };
+      } else if (this.top) {
+        this.style = {
+          'bottom': `${-box.top}px`,
+          'left': `${box.left + box.width / 2}px`,
+          'transform': `translateX(-50%)`,
+          'margin-top': `0`,
+          'margin-left': `0`,
+          'margin-right': `0`,
+        };
       } else {
         this.style = {
           'top': `${box.bottom}px`,
@@ -73,6 +84,26 @@ export default {
           'margin-bottom': `0`,
         };
       }
+
+      this.$nextTick(() => {
+        const box = this.$refs.tooltip.getBoundingClientRect();
+
+        if (this.left || this.right) {
+          let fudge;
+          if (box.top < 0) fudge = -box.top;
+          else if (box.bottom > window.innerHeight) fudge = window.innerHeight - box.bottom;
+          else return;
+
+          this.style.transform += ` translateY(${fudge}px)`;
+        } else {
+          let fudge;
+          if (box.left < 0) fudge = -box.left;
+          else if (box.right > window.innerWidth) fudge = window.innerWidth - box.right;
+          else return;
+
+          this.style.transform += ` translateX(${fudge}px)`;
+        }
+      });
     });
 
     node.addEventListener('mouseleave', () => {
@@ -103,7 +134,7 @@ div.v-tooltip {
   border-radius: 4px;
 
   color: white;
-  background-color: fade-out(#555, 0.15);
+  background-color: fade-out(#555, 0.05);
 
   font-size: 1 * $text-unit;
 

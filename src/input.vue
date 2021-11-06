@@ -5,9 +5,9 @@
     </label>
 
     <v-flex class="container" align-center :class="inputClasses">
-      <slot :id="id" />
-
-      <v-grow />
+      <v-flex grow>
+        <slot :id="id" />
+      </v-flex>
 
       <span style="margin: -2px 0" v-if="error">
         <v-icon small outlined color="error">error</v-icon>

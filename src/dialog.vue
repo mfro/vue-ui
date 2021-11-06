@@ -57,7 +57,7 @@ export default {
 
 .v-dialog {
   position: absolute;
-  background-color: fade-out(#111111, 0.6);
+  background-color: fade-out(#111111, 0.5);
   z-index: 1;
   width: 100vw;
   height: 100vh;

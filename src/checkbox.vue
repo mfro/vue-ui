@@ -37,6 +37,10 @@ export default {
     select() {
       this.$refs.input.select();
     },
+
+    toggle() {
+      this.$refs.input.checked = !this.$refs.input.checked;
+    },
   },
 };
 </script>

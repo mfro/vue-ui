@@ -1,10 +1,10 @@
 <template>
   <button
     class="v-button"
-    v-ripple
-    :class="['color-' + color, classes]"
+    v-ripple:ripple
+    :class="['color-' + color, { active }, classes]"
     :disabled="disabled"
-    @click="$emit('click')"
+    @click.stop="$emit('click')"
   >
     <v-flex align-center justify-center>
       <slot />
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, shallowRef } from 'vue';
 
 export default {
   name: 'v-button',
@@ -33,6 +33,8 @@ export default {
   },
 
   setup(props) {
+    const active = shallowRef(false);
+
     const classes = computed(() => ({
       fab: props.fab,
       text: props.text,
@@ -45,7 +47,14 @@ export default {
       'x-large': props.xLarge,
     }));
 
-    return { classes };
+    return {
+      active,
+      classes,
+
+      ripple(rippling) {
+        active.value = rippling;
+      },
+    };
   },
 };
 </script>
@@ -310,7 +319,7 @@ button.v-button {
     }
   }
 
-  &:active {
+  &.active {
     box-shadow: none;
   }
 }
