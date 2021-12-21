@@ -9,6 +9,7 @@
     :x-large="xLarge"
     :error="error"
     :warning="warning"
+    :disabled="disabled"
     style="cursor: text"
   >
     <template v-slot="{ id }">
@@ -18,6 +19,7 @@
         :id="id"
         :value="modelValue"
         :placeholder="placeholder"
+        :disabled="disabled"
         @input="onInput"
         @blur="$emit('blur')"
         @focus="$emit('focus')"
@@ -36,6 +38,7 @@ export default {
     modelValue: String,
     placeholder: String,
 
+    disabled: Boolean,
     solo: { type: Boolean, default: false },
     small: { type: Boolean, default: false },
     xSmall: { type: Boolean, default: false },

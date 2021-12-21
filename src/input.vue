@@ -1,6 +1,11 @@
 <template>
-  <v-flex column class="v-input" :class="{ solo, ...inputClasses }" v-ripple>
-    <label :for="id" v-if="label" class="label" style="cursor: inherit">
+  <v-flex
+    column
+    class="v-input"
+    :class="{ disabled, solo, ...inputClasses }"
+    :v-ripple="!disabled"
+  >
+    <label :for="id" v-if="label" class="label">
       {{ label }}
     </label>
 
@@ -32,6 +37,7 @@ export default {
   props: {
     label: String,
 
+    disabled: { type: Boolean, default: false },
     solo: { type: Boolean, default: false },
     small: { type: Boolean, default: false },
     xSmall: { type: Boolean, default: false },
@@ -73,6 +79,10 @@ div.v-input {
   background-color: darken(white, 8%);
   margin-top: (4 * $unit);
 
+  &.disabled {
+    cursor: default;
+  }
+
   &.solo {
     border-radius: 4px;
   }
@@ -103,6 +113,12 @@ div.v-input {
 
     font-size: 0.75 * $text-unit;
     color: lighten(black, 30%);
+    cursor: inherit;
+  }
+
+  &.disabled label {
+    cursor: default;
+    opacity: 0.5;
   }
 
   .container {

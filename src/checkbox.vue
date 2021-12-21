@@ -3,6 +3,7 @@
     ref="input"
     type="checkbox"
     :checked="modelValue"
+    :disabled="disabled"
     @change="$emit('update:modelValue', !modelValue)"
   />
 </template>
@@ -15,6 +16,7 @@ export default {
   props: {
     modelValue: Boolean,
 
+    disabled: { type: Boolean, default: false },
     solo: { type: Boolean, default: false },
     small: { type: Boolean, default: false },
     xSmall: { type: Boolean, default: false },
@@ -57,5 +59,7 @@ input {
 
   width: (1.1875 * $text_unit);
   height: (1.1875 * $text_unit);
+
+  flex: 0 0 auto;
 }
 </style>
