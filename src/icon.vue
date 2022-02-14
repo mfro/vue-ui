@@ -51,7 +51,7 @@ export default {
 @import "./style.scss";
 
 span.v-icon {
-  font-size: (1.5em / 0.875);
+  font-size: calc(1.5em / 0.875);
 
   vertical-align: middle;
 
@@ -80,19 +80,19 @@ span.v-icon {
   }
 
   &.x-small {
-    font-size: (0.875em / 0.875);
+    font-size: calc(0.875em / 0.875);
   }
 
   &.small {
-    font-size: (1.3em / 0.875);
+    font-size: calc(1.3em / 0.875);
   }
 
   &.large {
-    font-size: (1.75em / 0.875);
+    font-size: calc(1.75em / 0.875);
   }
 
   &.x-large {
-    font-size: (2em / 0.875);
+    font-size: calc(2em / 0.875);
   }
 }
 </style>
