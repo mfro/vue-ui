@@ -1,12 +1,12 @@
 {
   "name": "@mfro/vue-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "MIT",
   "main": "src/lib.ts",
   "dependencies": {
     "ress": "^3.0.0"
   },
-  "devDependencies": {
+  "peerDependencies": {
     "vue": "^3.0.0"
   }
 }
