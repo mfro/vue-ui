@@ -4,7 +4,8 @@
   <teleport v-if="ready" to="#v-overlay">
     <transition appear>
       <div class="v-tooltip" v-if="visible" :style="style" ref="tooltip">
-        <span>{{ text }}</span>
+        <span v-if="text">{{ text }}</span>
+        <slot v-else name="tooltip" />
       </div>
     </transition>
   </teleport>
