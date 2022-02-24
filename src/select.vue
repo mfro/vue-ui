@@ -71,6 +71,7 @@ export default {
 @import "./style.scss";
 
 div.v-select {
+  display: flex;
   position: relative;
 
   overflow: hidden;
@@ -80,6 +81,7 @@ div.v-select {
   border-radius: 4px;
 
   select {
+    flex: 1 1 auto;
     font-size: $text-unit;
     outline: none;
 
