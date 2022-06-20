@@ -1,11 +1,17 @@
 <template>
   <slot />
 
-  <teleport v-if="ready" to="#v-overlay">
+  <teleport v-if="ready"
+            to="#v-overlay">
     <transition appear>
-      <div class="v-tooltip" :class="{ plain }" v-if="style" :style="style" ref="tooltip">
+      <div class="v-tooltip"
+           :class="{ plain }"
+           v-if="style"
+           :style="style"
+           ref="tooltip">
         <span v-if="text">{{ text }}</span>
-        <slot v-else name="tooltip" />
+        <slot v-else
+              name="tooltip" />
       </div>
     </transition>
   </teleport>
@@ -115,6 +121,9 @@ export default {
         }
 
         this.$nextTick(() => {
+          if (!this.$refs.tooltip)
+            return;
+
           const box = this.$refs.tooltip.getBoundingClientRect();
 
           if (this.left || this.right) {
